@@ -7,7 +7,7 @@
 #include "uart.h"
 #include "twi.h"
 
-#define SENSOR_NUM 1
+#define SENSOR_NUM 8
 
 // settings for I2C
 //uint8_t I2C_buffer[sizeof(int)];
@@ -54,7 +54,16 @@ int main(void) {
     // Send value to UART
     // FIXME: Use proper size.
     char buf [25];
-    snprintf(buf, sizeof(buf), "%d\r\n", I2C_buffer[0]);
+    snprintf(buf, sizeof(buf), "%d %d %d %d %d %d %d %d\r\n", 
+      I2C_buffer[0],
+      I2C_buffer[1],
+      I2C_buffer[2],
+      I2C_buffer[3],
+      I2C_buffer[4],
+      I2C_buffer[5],
+      I2C_buffer[6],
+      I2C_buffer[7]
+    );
     uart0_puts(buf);
   }
 
